@@ -1,57 +1,47 @@
-name: Cypress - Testes Cross-browser
+name: Cypress - Testes Cross-Browser
 
 on:
   workflow_dispatch:
-    inputs:
-      cli:
-        description: Run by cypress command line
-        default: yarn cypress run
 
 jobs:
   cypress-electron-tests:
+    name: Cypress - Electron
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar dependências
-        run: yarn install
-
-      - name: Rodar Cypress - Electron
+      - name: Instalar e rodar testes no Electron
         uses: cypress-io/github-action@v5.0.8
         with:
-          install-command: yarn install
           browser: electron
+          install-command: yarn install
           group: UI Electron
 
-  cypress-E2E-chrome:
+  cypress-chrome-tests:
+    name: Cypress - Chrome
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar dependências
-        run: yarn install
-
-      - name: Rodar Cypress - Chrome
+      - name: Instalar e rodar testes no Chrome
         uses: cypress-io/github-action@v5.0.8
         with:
-          install-command: yarn install
           browser: chrome
+          install-command: yarn install
           group: UI Chrome
 
-  cypress-E2E-firefox:
+  cypress-firefox-tests:
+    name: Cypress - Firefox
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar dependências
-        run: yarn install
-
-      - name: Rodar Cypress - Firefox
+      - name: Instalar e rodar testes no Firefox
         uses: cypress-io/github-action@v5.0.8
         with:
-          install-command: yarn install
           browser: firefox
+          install-command: yarn install
           group: UI Firefox
