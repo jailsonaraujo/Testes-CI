@@ -9,7 +9,7 @@ on:
     - cron: '0 8 * * *'  # Executa diariamente às 05h no Brasil (08h UTC)
 
 jobs:
-  cypress-electron-tests:
+  cypress-E2E-electron:
     name: Cypress - Electron
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4.2.2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/upload-artifact@v4
         with:
           node-version: 18
 
@@ -30,14 +30,14 @@ jobs:
           browser: electron
 
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-electron
           path: cypress/reports
 
       - name: Upload Screenshots
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots-electron
           path: cypress/screenshots
@@ -70,21 +70,21 @@ jobs:
           browser: chrome
 
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-chrome
           path: cypress/reports
 
       - name: Upload Screenshots
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots-chrome
           path: cypress/screenshots
 
       - name: Upload Videos
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: videos-chrome
           path: cypress/videos
@@ -110,21 +110,21 @@ jobs:
           browser: firefox
 
       - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-firefox
           path: cypress/reports
 
       - name: Upload Screenshots
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots-firefox
           path: cypress/screenshots
 
       - name: Upload Videos
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: videos-firefox
           path: cypress/videos
