@@ -1,7 +1,13 @@
-name: Cypress - Testes Cross-Browser
+name: Executar Testes
 
 on:
   workflow_dispatch:
+  push:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 8 * * *'  # Executa às 05h (horário de Brasília)
 
 jobs:
   cypress-electron-tests:
