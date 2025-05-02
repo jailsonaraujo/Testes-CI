@@ -47,3 +47,22 @@ jobs:
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: chrome
+
+cypress-E2E-Firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes no Chrome
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          browser: firefox
