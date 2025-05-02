@@ -48,7 +48,7 @@ jobs:
         with:
           browser: chrome
 
-cypress-E2E-Firefox:
+cypress-E2E-firefox:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
