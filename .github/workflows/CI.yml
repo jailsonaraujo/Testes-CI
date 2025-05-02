@@ -62,7 +62,7 @@ cypress-E2E-firefox:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes no Chrome
+      - name: Executar testes no Firefox
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: firefox
