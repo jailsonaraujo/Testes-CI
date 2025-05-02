@@ -1,0 +1,132 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-05-02T17:24:13.975Z",
+    "end": "2025-05-02T17:25:06.488Z",
+    "duration": 52513,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0ce360fe-89e4-4ca9-ae2d-5168631907a1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5276c6b8-8c72-493b-be52-0bf556add39f",
+          "title": "Login automático com link de reset",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Testes 1",
+              "fullTitle": "Login automático com link de reset Testes 1",
+              "timedOut": null,
+              "duration": 5761,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.google.com/');\ncy.contains('Estou com sorte').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<input.RNmpXc>' to be 'visible'\n\nThis element `<input.RNmpXc>` is not visible because its parent `<div.UUbT9.EyBRub>` has CSS property: `display: none`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<input.RNmpXc>' to be 'visible'\n\nThis element `<input.RNmpXc>` is not visible because its parent `<div.UUbT9.EyBRub>` has CSS property: `display: none`\n    at Context.eval (webpack://nova-pasta/./cypress/e2e/login.cy.js:6:37)",
+                "diff": null
+              },
+              "uuid": "53af1c25-3dd2-4a24-8b4c-14f8de319d9b",
+              "parentUUID": "5276c6b8-8c72-493b-be52-0bf556add39f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Testes 2",
+              "fullTitle": "Login automático com link de reset Testes 2",
+              "timedOut": null,
+              "duration": 5425,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.google.com/');\ncy.contains('Pesquisa Google').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<input.gNO89b>' to be 'visible'\n\nThis element `<input.gNO89b>` is not visible because its parent `<div.UUbT9.EyBRub>` has CSS property: `display: none`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<input.gNO89b>' to be 'visible'\n\nThis element `<input.gNO89b>` is not visible because its parent `<div.UUbT9.EyBRub>` has CSS property: `display: none`\n    at Context.eval (webpack://nova-pasta/./cypress/e2e/login.cy.js:13:37)",
+                "diff": null
+              },
+              "uuid": "fc057a13-000c-46f6-9533-312395746644",
+              "parentUUID": "5276c6b8-8c72-493b-be52-0bf556add39f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "53af1c25-3dd2-4a24-8b4c-14f8de319d9b",
+            "fc057a13-000c-46f6-9533-312395746644"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11186,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-02T17:29:26.158Z",
+    "end": "2025-05-02T17:29:41.812Z",
+    "duration": 15654,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6a777406-8e32-4e81-a88d-669dcabf90a4",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4c249466-f645-4586-8428-a07442abe63b",
+          "title": "TESTANDO",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Testes 1",
+              "fullTitle": "TESTANDO Testes 1",
+              "timedOut": null,
+              "duration": 5347,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.google.com/');\ncy.contains('Estou com sorte');",
+              "err": {},
+              "uuid": "8f8e8605-b62b-43d4-ab6e-1bf12bc0fd3c",
+              "parentUUID": "4c249466-f645-4586-8428-a07442abe63b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Testes 2",
+              "fullTitle": "TESTANDO Testes 2",
+              "timedOut": null,
+              "duration": 3828,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.google.com/');\ncy.contains('Pesquisa Google');",
+              "err": {},
+              "uuid": "b68469b1-ca6a-47c2-b5fc-7c441e49563b",
+              "parentUUID": "4c249466-f645-4586-8428-a07442abe63b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8f8e8605-b62b-43d4-ab6e-1bf12bc0fd3c",
+            "b68469b1-ca6a-47c2-b5fc-7c441e49563b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9175,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
