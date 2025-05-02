@@ -25,6 +25,25 @@ jobs:
       - name: cypress run
         uses: cypress-io/github-action@v5.0.8
         with:
+          browser: electron
+  
+  cyrpess-E2E-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: cypress run
+        uses: cypress-io/github-action@v5.0.8
+        with:
           browser: chrome
 
       - name: Run E2E tests
