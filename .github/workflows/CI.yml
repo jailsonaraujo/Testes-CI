@@ -1,0 +1,128 @@
+name: Executar Testes
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 8 * * *'  # Executa às 05h (horário de Brasília)
+
+jobs:
+  cypress-E2E-electron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes no Electron
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          browser: electron
+
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-electron
+          path: cypress/reports
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-electron
+          path: cypress/screenshots
+
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-electron
+          path: cypress/videos
+
+  cypress-E2E-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes no Chrome
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          browser: chrome
+
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-electron
+          path: cypress/reports
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-electron
+          path: cypress/screenshots
+
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-electron
+          path: cypress/videos
+
+  cypress-E2E-firefox:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout do código
+          uses: actions/checkout@v4.2.2
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18
+
+        - name: Instalar dependências
+          run: npm ci
+
+        - name: Executar testes no Firefox
+          uses: cypress-io/github-action@v5.0.8
+          with:
+            browser: firefox
+
+        - name: Upload Mochawesome Report
+          uses: actions/upload-artifact@v4
+          with:
+            name: mochawesome-electron
+            path: cypress/reports
+
+        - name: Upload Screenshots
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: screenshots-electron
+            path: cypress/screenshots
+
+        - name: Upload Videos
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: videos-electron
+            path: cypress/videos
