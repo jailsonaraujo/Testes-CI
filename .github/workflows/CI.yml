@@ -2,7 +2,6 @@ name: Cypress - Testes Cross-Browser
 
 on:
   workflow_dispatch:
-
 jobs:
   cypress-electron-tests:
     name: Cypress - Electron
