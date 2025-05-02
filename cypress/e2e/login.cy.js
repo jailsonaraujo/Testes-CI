@@ -3,14 +3,14 @@ describe('Login automático com link de reset', () => {
       
       cy.visit('https://www.google.com/');
 
-      cy.contains('Estou com sorte')
+      cy.contains('Estou com sorte').should('be.visible')
     })
 
     it('Testes 2', () => {
       
       cy.visit('https://www.google.com/');
 
-      cy.contains('Pesquisa Google')
+      cy.contains('Pesquisa Google').should('be.visible')
     })
 });
   
