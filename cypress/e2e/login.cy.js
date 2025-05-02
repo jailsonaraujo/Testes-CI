@@ -1,9 +1,16 @@
 describe('Login automático com link de reset', () => {
-    it('Testes', () => {
+    it('Testes 1', () => {
       
-      cy.visit('https://valia.lndo.site/');
+      cy.visit('https://www.google.com/');
 
-      cy.contains('Ainda não foi criado nenhum conteúdo para a página inicial')
-    });
-  });
+      cy.contains('Estou com sorte')
+    })
+
+    it('Testes 2', () => {
+      
+      cy.visit('https://www.google.com/');
+
+      cy.contains('Pesquisa Google')
+    })
+});
   
