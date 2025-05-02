@@ -11,12 +11,14 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar e rodar testes no Electron
+      - name: Instalar dependências
+        run: yarn install
+
+      - name: Executar testes no Electron
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: electron
           install-command: yarn install
-          group: UI Electron
 
   cypress-chrome-tests:
     name: Cypress - Chrome
@@ -25,12 +27,14 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar e rodar testes no Chrome
+      - name: Instalar dependências
+        run: yarn install
+
+      - name: Executar testes no Chrome
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: chrome
           install-command: yarn install
-          group: UI Chrome
 
   cypress-firefox-tests:
     name: Cypress - Firefox
@@ -39,9 +43,11 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4.2.2
 
-      - name: Instalar e rodar testes no Firefox
+      - name: Instalar dependências
+        run: yarn install
+
+      - name: Executar testes no Firefox
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: firefox
           install-command: yarn install
-          group: UI Firefox
