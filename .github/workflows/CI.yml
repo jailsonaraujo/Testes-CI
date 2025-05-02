@@ -1,4 +1,4 @@
-name: cypress testes
+name: Cypress - Testes Cross-browser
 
 on:
   workflow_dispatch:
@@ -8,61 +8,50 @@ on:
         default: yarn cypress run
 
 jobs:
-  cyrpess-electron-tests:
+  cypress-electron-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
-      - name: Dependencias
+      - name: Instalar dependências
         run: yarn install
 
-      - name: cypress run
+      - name: Rodar Cypress - Electron
         uses: cypress-io/github-action@v5.0.8
         with:
           install-command: yarn install
           browser: electron
           group: UI Electron
 
-      - name: Run E2E tests
-        run: ${{ github.event.inputs.cli }}
+  cypress-E2E-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
 
-  cyrpess-E2E-chrome:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4.2.2
+      - name: Instalar dependências
+        run: yarn install
 
-        - name: Dependencias
-          run: yarn install
+      - name: Rodar Cypress - Chrome
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          install-command: yarn install
+          browser: chrome
+          group: UI Chrome
 
-        - name: Run E2E tests
-          run: ${{ github.event.inputs.cli }}
+  cypress-E2E-firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
 
-        - name: cypress run
-          uses: cypress-io/github-action@v5.0.8
-          with:
-            install-command: yarn install
-            browser: chrome
-            group: UI Chrome
+      - name: Instalar dependências
+        run: yarn install
 
-  cyrpess-E2E-firefox:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4.2.2
-
-          - name: Dependencias
-            run: yarn install
-
-          - name: Run E2E tests
-            run: ${{ github.event.inputs.cli }}
-
-          - name: cypress run
-            uses: cypress-io/github-action@v5.0.8
-            with:
-              install-command: yarn install
-              browser: firefox
-              group: UI Firefox
-
-      
+      - name: Rodar Cypress - Firefox
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          install-command: yarn install
+          browser: firefox
+          group: UI Firefox
