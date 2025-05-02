@@ -71,21 +71,21 @@ jobs:
       - name: Upload Mochawesome Report
         uses: actions/upload-artifact@v4
         with:
-          name: mochawesome-electron
+          name: mochawesome-chrome
           path: cypress/reports
 
       - name: Upload Screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: screenshots-electron
+          name: screenshots-chrome
           path: cypress/screenshots
 
       - name: Upload Videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: videos-electron
+          name: videos-chrome
           path: cypress/videos
 
   cypress-E2E-firefox:
@@ -110,19 +110,19 @@ jobs:
         - name: Upload Mochawesome Report
           uses: actions/upload-artifact@v4
           with:
-            name: mochawesome-electron
+            name: mochawesome-firefox
             path: cypress/reports
 
         - name: Upload Screenshots
           if: always()
           uses: actions/upload-artifact@v4
           with:
-            name: screenshots-electron
+            name: screenshots-firefox
             path: cypress/screenshots
 
         - name: Upload Videos
           if: always()
           uses: actions/upload-artifact@v4
           with:
-            name: videos-electron
+            name: videos-firefox
             path: cypress/videos
