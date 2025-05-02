@@ -10,7 +10,7 @@ on:
     - cron: '0 8 * * *'  # Executa às 05h (horário de Brasília)
 
 jobs:
-  cypress-electron-tests:
+  cypress-E2E-electron:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -28,6 +28,26 @@ jobs:
         uses: cypress-io/github-action@v5.0.8
         with:
           browser: electron
+
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-electron
+          path: cypress/reports
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-electron
+          path: cypress/screenshots
+
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-electron
+          path: cypress/videos
 
   cypress-E2E-chrome:
     runs-on: ubuntu-latest
@@ -48,6 +68,26 @@ jobs:
         with:
           browser: chrome
 
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-electron
+          path: cypress/reports
+
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-electron
+          path: cypress/screenshots
+
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-electron
+          path: cypress/videos
+
   cypress-E2E-firefox:
       runs-on: ubuntu-latest
       steps:
@@ -66,3 +106,23 @@ jobs:
           uses: cypress-io/github-action@v5.0.8
           with:
             browser: firefox
+
+        - name: Upload Mochawesome Report
+          uses: actions/upload-artifact@v4
+          with:
+            name: mochawesome-electron
+            path: cypress/reports
+
+        - name: Upload Screenshots
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: screenshots-electron
+            path: cypress/screenshots
+
+        - name: Upload Videos
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: videos-electron
+            path: cypress/videos
