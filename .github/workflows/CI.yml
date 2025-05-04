@@ -10,7 +10,7 @@ on:
     - cron: '0 8 * * *'  # Executa às 05h (horário de Brasília)
 
 jobs:
-  cypress-E2E-electron:
+  cypress-e2e-electron:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -49,8 +49,8 @@ jobs:
           name: videos-electron
           path: cypress/videos
 
-  cypress-E2E-chrome:
-    needs: cypress-E2E-electron
+  cypress-e2e-chrome:
+    needs: cypress-e2e-electron
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -89,8 +89,8 @@ jobs:
           name: videos-chrome
           path: cypress/videos
 
-  cypress-E2E-firefox:
-    needs: cypress-E2E-chrome
+  cypress-e2e-firefox:
+    needs: cypress-e2e-chrome
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
