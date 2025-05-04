@@ -50,6 +50,7 @@ jobs:
           path: cypress/videos
 
   cypress-E2E-chrome:
+    needs: cypress-E2E-electron
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
@@ -89,40 +90,41 @@ jobs:
           path: cypress/videos
 
   cypress-E2E-firefox:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout do código
-          uses: actions/checkout@v4.2.2
+    needs: cypress-E2E-chrome
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
 
-        - name: Setup Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-        - name: Instalar dependências
-          run: npm ci
+      - name: Instalar dependências
+        run: npm ci
 
-        - name: Executar testes no Firefox
-          uses: cypress-io/github-action@v5.0.8
-          with:
-            browser: firefox
+      - name: Executar testes no Firefox
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          browser: firefox
 
-        - name: Upload Mochawesome Report
-          uses: actions/upload-artifact@v4
-          with:
-            name: mochawesome-firefox
-            path: cypress/reports
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-firefox
+          path: cypress/reports
 
-        - name: Upload Screenshots
-          if: always()
-          uses: actions/upload-artifact@v4
-          with:
-            name: screenshots-firefox
-            path: cypress/screenshots
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-firefox
+          path: cypress/screenshots
 
-        - name: Upload Videos
-          if: always()
-          uses: actions/upload-artifact@v4
-          with:
-            name: videos-firefox
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-firefox
             path: cypress/videos
