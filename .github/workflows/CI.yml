@@ -10,8 +10,12 @@ on:
     - cron: '0 8 * * *'  # Executa às 05h (horário de Brasília)
 
 jobs:
-  cypress-e2e-electron:
+  cypress-e2e:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [electron, chrome, firefox]
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4.2.2
@@ -24,107 +28,45 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes no Electron
+      - name: Executar testes no ${{ matrix.browser }}
         uses: cypress-io/github-action@v5.0.8
         with:
-          browser: electron
+          browser: ${{ matrix.browser }}
 
       - name: Upload Mochawesome Report
         uses: actions/upload-artifact@v4
         with:
-          name: mochawesome-electron
+          name: mochawesome-${{ matrix.browser }}
           path: cypress/reports
 
-      - name: Upload Screenshots
+      - name: Upload Screenshots (condicional)
+        if: always()
+        run: |
+          if [ -d "cypress/screenshots" ] && [ "$(ls -A cypress/screenshots)" ]; then
+            echo "Uploading screenshots..."
+            tar -cvf screenshots-${{ matrix.browser }}.tar cypress/screenshots
+          else
+            echo "No screenshots to upload"
+          fi
+      - name: Enviar Screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: screenshots-electron
-          path: cypress/screenshots
+          name: screenshots-${{ matrix.browser }}
+          path: screenshots-${{ matrix.browser }}.tar
 
-      - name: Upload Videos
+      - name: Upload Videos (condicional)
+        if: always()
+        run: |
+          if [ -d "cypress/videos" ] && [ "$(ls -A cypress/videos)" ]; then
+            echo "Uploading videos..."
+            tar -cvf videos-${{ matrix.browser }}.tar cypress/videos
+          else
+            echo "No videos to upload"
+          fi
+      - name: Enviar Videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: videos-electron
-          path: cypress/videos
-
-  cypress-e2e-chrome:
-    needs: cypress-e2e-electron
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4.2.2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Executar testes no Chrome
-        uses: cypress-io/github-action@v5.0.8
-        with:
-          browser: chrome
-
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: mochawesome-chrome
-          path: cypress/reports
-
-      - name: Upload Screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshots-chrome
-          path: cypress/screenshots
-
-      - name: Upload Videos
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: videos-chrome
-          path: cypress/videos
-
-  cypress-e2e-firefox:
-    needs: cypress-e2e-chrome
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4.2.2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Executar testes no Firefox
-        uses: cypress-io/github-action@v5.0.8
-        with:
-          browser: firefox
-
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: mochawesome-firefox
-          path: cypress/reports
-
-      - name: Upload Screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshots-firefox
-          path: cypress/screenshots
-
-      - name: Upload Videos
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: videos-firefox
-          path: cypress/videos
+          name: videos-${{ matrix.browser }}
+          path: videos-${{ matrix.browser }}.tar
